@@ -11,7 +11,7 @@ app = QApplication([])
 window = QLabel('Window from label')
 window.show()
 
-# Start Qt/PySide application. If we don't define any windows, the
-# app would just hang at this point
+# Start Qt/PySide application. If we don't show any windows, the
+# app would just loop at this point without the means to exit
 app.exec_()
 
