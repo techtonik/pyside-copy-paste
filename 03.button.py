@@ -9,6 +9,7 @@ app = QApplication([])
 
 # Create button (which is also top level window)
 button = QPushButton('Exit')
+button.clicked.connect(app.exit)
 button.show()
 
 # IMPORTANT: remember to assign GUI elements to variables or they
