@@ -7,9 +7,9 @@ from PySide.QtGui import QApplication, QPushButton
 
 app = QApplication([])
 
-# Create top level application window with button
-window = QPushButton('Window with button')
-window.show()
+# Create button (which is also top level window)
+button = QPushButton('Exit')
+button.show()
 
 # IMPORTANT: remember to assign GUI elements to variables or they
 # will be destroyed by PySide automatically
