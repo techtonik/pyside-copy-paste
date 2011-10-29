@@ -3,12 +3,12 @@
 
 # Absolutely minimal example of PySide application with button
 
-from PySide.QtGui import QApplication, QLabel
+from PySide.QtGui import QApplication, QPushButton
 
 app = QApplication([])
 
 # Create top level application window with button
-window = QLabel('Window from label')
+window = QPushButton('Window with button')
 window.show()
 
 # IMPORTANT: remember to assign GUI elements to variables or they
