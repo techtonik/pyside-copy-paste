@@ -1,27 +1,18 @@
 # The code is placed into public domain by anatoly techtonik
 # Feel free to copy/paste wherever you like
 
-# Absolutely minimal example of PySide application with window
+# Absolutely minimal example of PySide application with button
 
 from PySide.QtGui import QApplication, QLabel
 
-# Get entrypoint through which we control underlying Qt framework
 app = QApplication([])
 
-# Qt automatically creates top level application window if you
-# instruct it to show() any GUI element
+# Create top level application window with button
 window = QLabel('Window from label')
 window.show()
 
-# IMPORTANT: `window` variable now contains a reference to a top
-# level window, and if you lose the variable, the window will be
-# destroyed by PySide automatically, e.g. this won't show:
-# 
-#   QLabel('New Window').show()
-#
-# This is true for other PySide objects, so be careful.
+# IMPORTANT: remember to assign GUI elements to variables or they
+# will be destroyed by PySide automatically
 
-# Start Qt/PySide application. If we don't show any windows, the
-# app would just loop at this point without the means to exit
 app.exec_()
 
