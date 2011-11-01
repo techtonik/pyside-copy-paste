@@ -3,12 +3,15 @@
 
 # Absolutely minimal example of PySide application with button calling dialog
 
-from PySide.QtGui import QApplication, QPushButton, QColorDialog
+# More info about Qt dialogs:
+# http://www.pyside.org/docs/pyside/PySide/QtGui/QDialog.html#PySide.QtGui.QDialog
+
+from PySide.QtGui import QApplication, QPushButton, QColorDialog, QMessageBox
 
 
 def choose_color():
     color  = QColorDialog().getColor()
-    print color
+    msgbox = QMessageBox(QMessageBox.NoIcon, u'Selected Color', unicode(color)).exec_()
 
 app = QApplication([])
     
