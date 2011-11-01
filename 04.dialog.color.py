@@ -6,12 +6,27 @@
 # More info about Qt dialogs:
 # http://www.pyside.org/docs/pyside/PySide/QtGui/QDialog.html#PySide.QtGui.QDialog
 
-from PySide.QtGui import QApplication, QPushButton, QColorDialog, QMessageBox
+from PySide.QtGui import QApplication, QPushButton, QColorDialog, QMessageBox,\
+                         QPixmap
 
 
 def choose_color():
+    # Select color
     color  = QColorDialog().getColor()
-    msgbox = QMessageBox(QMessageBox.NoIcon, u'Selected Color', unicode(color)).exec_()
+    
+    # Report about result of selection in QMessageBox dialog
+    msgbox = QMessageBox()
+    if color.isValid():
+        # Create a memory image 50x50 filled with selected color to display
+        # as a icon in the msgbox dialog
+        pixmap = QPixmap(50, 50)
+        pixmap.fill(color)
+        msgbox.setWindowTitle(u'Selected Color')
+        msgbox.setIconPixmap(pixmap)
+    else:
+        msgbox.setWindowTitle(u'No Color was Selected')
+    msgbox.exec_()
+
 
 app = QApplication([])
     
