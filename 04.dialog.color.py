@@ -3,14 +3,19 @@
 
 # Absolutely minimal example of PySide application with button calling dialog
 
-from PySide.QtGui import QApplication, QPushButton
+from PySide.QtGui import QApplication, QPushButton, QColorDialog
+
+
+def choose_color():
+    color  = QColorDialog().getColor()
+    print color
 
 app = QApplication([])
     
 # Create top level window/button
-button = QPushButton('Exit')
-# call app.exit() when the button is clicked ('clicked' signal fires)
-button.clicked.connect(app.exit)
+button = QPushButton('Choose Color')
+# Call function that invokes color selection dialog when the button is clicked
+button.clicked.connect(choose_color)
 button.show()
 
 app.exec_()
