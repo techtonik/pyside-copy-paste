@@ -3,8 +3,7 @@
 
 # Minimal PySide application with button for choosing color to paint itself
 
-from PySide.QtGui import QApplication, QPushButton, QColorDialog, QMessageBox,\
-                         QPixmap
+from PySide.QtGui import QApplication, QPushButton, QColorDialog, QMessageBox
 
 
 class ButtonPainter(object):
@@ -18,12 +17,8 @@ class ButtonPainter(object):
     # Report about result of selection in QMessageBox dialog
     msgbox = QMessageBox()
     if color.isValid():
-        # Create a memory image 50x50 filled with selected color to display
-        # as a icon in the msgbox dialog
-        pixmap = QPixmap(50, 50)
-        pixmap.fill(color)
-        msgbox.setWindowTitle(u'Selected Color: ' + color.name())
-        msgbox.setIconPixmap(pixmap)
+        # Set color with a stylesheet
+        self.button.setStyleSheet(u'background-color:' + color.name())
     else:
         msgbox.setWindowTitle(u'No Color was Selected')
     msgbox.exec_()
