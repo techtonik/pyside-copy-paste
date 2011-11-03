@@ -14,14 +14,14 @@ class ButtonPainter(object):
     # Select color
     color  = QColorDialog().getColor()
     
-    # Report about result of selection in QMessageBox dialog
-    msgbox = QMessageBox()
     if color.isValid():
-        # Set color with a stylesheet
+        # Set color with a stylesheet (this seems to destroy default system
+        # theme for the element - like rounded corners etc)
         self.button.setStyleSheet(u'background-color:' + color.name())
     else:
+        msgbox = QMessageBox()
         msgbox.setWindowTitle(u'No Color was Selected')
-    msgbox.exec_()
+        msgbox.exec_()
 
 
 app = QApplication([])
