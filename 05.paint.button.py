@@ -1,16 +1,14 @@
 # The code is placed into public domain by anatoly techtonik
 # Feel free to copy/paste wherever you like
 
-# Absolutely minimal example of PySide application with button calling dialog
-
-# More info about Qt dialogs:
-# http://www.pyside.org/docs/pyside/PySide/QtGui/QDialog.html#PySide.QtGui.QDialog
+# Minimal PySide application with button for choosing color to paint itself
 
 from PySide.QtGui import QApplication, QPushButton, QColorDialog, QMessageBox,\
                          QPixmap
 
 
-def choose_color():
+class ButtonPainter(object):
+  def choose_color(self):
     # Select color
     color  = QColorDialog().getColor()
     
@@ -32,8 +30,11 @@ app = QApplication([])
     
 # Create top level window/button
 button = QPushButton('Choose Color')
-# Call function that invokes color selection dialog when the button is clicked
-button.clicked.connect(choose_color)
+# button.clicked.connect() doesn't support passing custom parameters to
+# handler function (reference to the  button that we want to paint), so we
+# create object that will hold this parameter
+button_painter = ButtonPainter()
+button.clicked.connect(button_painter.choose_color)
 button.show()
 
 app.exec_()
