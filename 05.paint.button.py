@@ -2,6 +2,12 @@
 # Feel free to copy/paste wherever you like
 
 # Minimal PySide application with button for choosing color to paint itself
+#
+# NOTE: Setting color for a button may destroy default system
+#       theme for the element - like rounded corners etc. because
+#       OS theme engine may not support setting colors for buttons:
+#       http://qt-project.org/doc/qt-4.8/stylesheet-examples.html#customizing-a-qpushbutton-using-the-box-model
+
 
 from PySide.QtGui import QApplication, QPushButton, QColorDialog, QMessageBox
 
@@ -15,8 +21,6 @@ class ButtonPainter(object):
     color  = QColorDialog().getColor()
     
     if color.isValid():
-        # Set color with a stylesheet (this seems to destroy default system
-        # theme for the element - like rounded corners etc)
         self.button.setStyleSheet(u'background-color:' + color.name())
     else:
         msgbox = QMessageBox()
